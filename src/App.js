@@ -1,25 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Save from "./features/Save";
+import ScenesMenu from "./features/ScenesMenu";
+import Inputs from "./features/Inputs";
+import Scene from "./features/Scene";
+import Properties from "./features/Properties";
+import ReactDrag from "./ReactDrag";
 
+const initialData = [
+  {
+    key: 0,
+    name: "Scene1",
+    items: []
+  },
+  {
+    key: 1,
+    name: "Scene2",
+    items: []
+  },
+  {
+    key: 2,
+    name: "Scene3",
+    items: []
+  }
+];
 function App() {
+  const [scenes, setScenes] = useState(initialData);
+  const [selectedScene, setSelectedScene] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Save scenes={scenes} setScenes={setScenes} />
+      <ScenesMenu
+        scenes={scenes}
+        setScenes={setScenes}
+        selectedScene={selectedScene}
+        setSelectedScene={setSelectedScene}
+      />
+      <div
+        className="wrapper"
+        style={{ height: "80vh", background: "black", display: "flex" }}
+      >
+        <Inputs scenes={scenes} setScenes={setScenes} />
+        <Scene
+          scene={scenes[selectedScene]}
+          setScenes={setScenes}
+          selectedScene={selectedScene}
+        />
+        <Properties scenes={scenes} setScenes={setScenes} />
+      </div>
+      {/* <ReactDrag /> */}
+    </>
   );
 }
 
