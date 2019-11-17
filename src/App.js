@@ -57,7 +57,11 @@ function App() {
         className="wrapper"
         style={{ height: "80vh", background: "black", display: "flex" }}
       >
-        <Inputs scenes={scenes} setScenes={setScenes} />
+        <Inputs
+          scenes={scenes}
+          setScenes={setScenes}
+          scene={scenes[selectedScene]}
+        />
         <Scene
           scene={scenes[selectedScene]}
           setScenes={setScenes}

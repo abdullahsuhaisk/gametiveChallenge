@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../components/Button";
 import SceneRenderer from "../components/SceneRenderer";
-import Label from "../components/Label";
 
 const Wrapper = styled.div`
   width: 50%;

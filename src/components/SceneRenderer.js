@@ -8,13 +8,13 @@ const MyComponentService = {
 };
 
 const SceneRenderer = ({ scene }) => {
-  console.log(scene.components);
+  // console.log(scene.components);
   // const Component = MyComponentService["myLabel"];
   const components = () => {
-    return scene.components.map(item => {
+    return scene.components.map((item, key) => {
       let Component = MyComponentService[item.name];
-      console.log(Component);
-      return <Component />;
+      // console.log(Component);
+      return <Component key={key} {...item.props} />;
     });
   };
   return <div style={{ height: "100%", width: "100%" }}>{components()}</div>;
