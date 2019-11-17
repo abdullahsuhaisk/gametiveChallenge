@@ -70,13 +70,18 @@ const initialData = [
   }
 ];
 function App() {
-  const [scenes, setScenes] = useState(initialData);
+  const [scenes, setScenes] = useState(
+    localStorage.getItem("JSON")
+      ? JSON.parse(localStorage.getItem("JSON"))
+      : initialData
+  );
+  console.log(scenes);
   const [selectedScene, setSelectedScene] = useState(0);
   const [selecetedComponent, setSelecetedComponent] = useState(null);
 
   return (
     <>
-      <Save scenes={scenes} setScenes={setScenes} />
+      <Save scenes={scenes} />
       <ScenesMenu
         scenes={scenes}
         setScenes={setScenes}

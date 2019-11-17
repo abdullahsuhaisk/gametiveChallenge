@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -21,10 +21,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const Save = () => {
+const Save = ({ scenes }) => {
+  const saveHandler = useCallback(() => {
+    localStorage.setItem("JSON", JSON.stringify(scenes));
+    console.log("saved");
+  }, []);
   return (
     <Wrapper>
-      <button>Save</button>
+      <button onClick={() => saveHandler()}>Save</button>
     </Wrapper>
   );
 };
