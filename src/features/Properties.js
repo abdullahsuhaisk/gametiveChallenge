@@ -17,7 +17,8 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
     title: "Title",
     background: "yellow",
     width: "100px",
-    height: "110px"
+    height: "110px",
+    color: "white"
   });
   useEffect(() => {
     const cssb =
@@ -27,14 +28,38 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
   }, [selecetedComponent]);
   // console.log(cssa);
   // console.log(selecetedComponent);
-  console.log(scene);
-  console.log(scenes);
+  // console.log(scene);
+  // console.log(scenes);
+
+  const handleSubmit = e => {
+    console.log("a");
+    e.preventDefault();
+    scene.components.map((item, key) => {
+      return key === selecetedComponent ? (item.css = cssa) : item;
+    });
+    setScenes(
+      scenes.map(item => {
+        return item.key === scene.key ? (item = scene) : item;
+      })
+    );
+  };
 
   if (selecetedComponent !== null)
     return (
       <Wrapper>
         <h1>Properties</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="">title</label>
+            <input
+              type="text"
+              id="title"
+              onChange={e =>
+                setCssa({ ...cssa, [e.target.id]: e.target.value })
+              }
+              value={cssa && cssa.title}
+            />
+          </div>
           <div>
             <label htmlFor="">width</label>
             <input
@@ -43,6 +68,8 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
               onChange={e =>
                 setCssa({ ...cssa, [e.target.id]: e.target.value })
               }
+              value={cssa && cssa.width}
+
             />
           </div>
           <div>
@@ -53,34 +80,35 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
               onChange={e =>
                 setCssa({ ...cssa, [e.target.id]: e.target.value })
               }
+              value={cssa && cssa.height}
+
             />
           </div>
           <div>
-            <label htmlFor="">color</label>
+            <label htmlFor="">Background Color</label>
             <input
               type="text"
               id="background"
               onChange={e =>
                 setCssa({ ...cssa, [e.target.id]: e.target.value })
               }
+              value={cssa && cssa.background}
             />
           </div>
+          <div>
+            <label htmlFor="">color</label>
+            <input
+              type="text"
+              id="color"
+              onChange={e =>
+                setCssa({ ...cssa, [e.target.id]: e.target.value })
+              }
+              value={cssa && cssa.color}
+
+            />
+          </div>
+          <input type="submit" value="Submit" />
         </form>
-        <button
-          onClick={() => {
-            scene.components.map((item, key) => {
-              return key === selecetedComponent ? (item.css = cssa) : item;
-            });
-            console.log(scene);
-            setScenes(
-              scenes.map(item => {
-                return item.key === scene.key ? (item = scene) : item;
-              })
-            );
-          }}
-        >
-          Save
-        </button>
       </Wrapper>
     );
   return null;

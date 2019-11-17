@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "./Button";
 import Label from "./Label";
+import Input from "./Input";
 
 const MyComponentService = {
   myButton: Button,
-  myLabel: Label
+  myLabel: Label,
+  myInput: Input
 };
 
 const SceneRenderer = ({ scene, scenes, setScenes, setSelecetedComponent }) => {

@@ -27,7 +27,18 @@ const initialData = [
       },
       {
         name: "myLabel",
-        props: {}
+        props: {
+          deltaPosition: {
+            x: 300,
+            y: 0
+          }
+        },
+        css: {
+          title: "Title",
+          background: "yellow",
+          width: "100px",
+          height: "110px"
+        }
       }
     ]
   },
@@ -45,7 +56,9 @@ const initialData = [
         },
         css: {
           title: "Title",
-          background: "yellow"
+          background: "yellow",
+          width: "100px",
+          height: "110px"
         }
       }
     ]
@@ -63,7 +76,10 @@ const initialData = [
           }
         },
         css: {
-          title: "Title"
+          title: "Title",
+          background: "yellow",
+          width: "100px",
+          height: "110px"
         }
       }
     ]

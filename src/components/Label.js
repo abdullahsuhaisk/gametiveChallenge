@@ -1,13 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
+import StyledDiv from "./StyledDiv";
+const Label = props => {
+  const {
+    scenes,
+    setScenes,
+    scene,
+    componentKey,
+    css,
+    setSelecetedComponent
+  } = props;
+  // console.log(props);
+  // console.log(scene);
+  // console.log(css);
 
-const Label = () => {
+  useEffect(() => {
+    props.deltaPosition && setState(props);
+  }, []);
   const [state, setState] = useState({
     deltaPosition: {
       x: 0,
       y: 0
     }
   });
+  const updateState = () => {
+    scene.components.map((item, key) =>
+      key === componentKey ? (item.props = state) : item.props
+    );
+    setScenes(
+      scenes.map(item => {
+        return item.key === scene.key ? (item = scene) : item;
+      })
+    );
+  };
+  // updateState();
 
   const handleDrag = (e, ui) => {
     const { x, y } = state.deltaPosition;
@@ -17,28 +43,23 @@ const Label = () => {
         y: y + ui.deltaY
       }
     });
+    updateState();
   };
+  // console.log(state);
+  // console.log(props.componentKey);
 
-  return (
-    <Draggable
-      bounds="parent"
-      onDrag={handleDrag}
-      defaultPosition={{ x: state.deltaPosition.x, y: state.deltaPosition.y }}
-    >
-      <div
-        style={{
-          height: "150px",
-          width: "150px",
-          position: "relative",
-          overflow: "auto",
-          padding: "0"
-        }}
+  if (props.deltaPosition) {
+    return (
+      <Draggable
+        bounds="parent"
+        onDrag={handleDrag}
+        defaultPosition={{ x: state.deltaPosition.x, y: state.deltaPosition.y }}
       >
-        x: {state.deltaPosition.x.toFixed(0)}, y:
-        {state.deltaPosition.y.toFixed(0)}
-      </div>
-    </Draggable>
-  );
+        <StyledDiv {...css} onClick={() => setSelecetedComponent(componentKey)}>
+          {(css && css.title) || "Write a title"}
+        </StyledDiv>
+      </Draggable>
+    );
+  }
 };
-
 export default Label;
