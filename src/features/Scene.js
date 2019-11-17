@@ -27,7 +27,11 @@ class Scene extends React.Component {
             padding: "0"
           }}
         >
-          <SceneRenderer scene={this.props.scene} />
+          <SceneRenderer
+            scene={this.props.scene}
+            setScenes={this.props.setScenes}
+            scenes={this.props.scenes}
+          />
         </div>
       </Wrapper>
     );

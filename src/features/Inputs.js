@@ -22,17 +22,23 @@ const Wrapper = styled.div`
 `;
 
 const Inputs = ({ scene, setScenes, scenes }) => {
-  console.log(scenes);
-  console.log(scene);
+  // console.log(scenes);
+  // console.log(scene);
 
   const component = {
     name: null,
-    props: {}
+    props: {
+      deltaPosition: {
+        x: 0,
+        y: 0
+      },
+      content: "Please write a content"
+    }
   };
   const updateState = componentName => {
     component.name = componentName;
     scene.components = [...scene.components, component];
-    console.log(scene);
+    // console.log(scene);
     setScenes(
       scenes.map(item => {
         return item.key === scene.key ? (item = scene) : item;

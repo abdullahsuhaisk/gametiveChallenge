@@ -12,7 +12,16 @@ const initialData = [
     components: [
       {
         name: "myButton",
-        props: {}
+        props: {
+          deltaPosition: {
+            x: 300,
+            y: 0
+          }
+        },
+        css: {
+          title: "Title",
+          background: "yellow"
+        }
       },
       {
         name: "myLabel",
@@ -26,7 +35,16 @@ const initialData = [
     components: [
       {
         name: "myButton",
-        props: {}
+        props: {
+          deltaPosition: {
+            x: 300,
+            y: 0
+          }
+        },
+        css: {
+          title: "Title",
+          background: "yellow"
+        }
       }
     ]
   },
@@ -36,7 +54,15 @@ const initialData = [
     components: [
       {
         name: "myButton",
-        props: {}
+        props: {
+          deltaPosition: {
+            x: 300,
+            y: 0
+          }
+        },
+        css: {
+          title: "Title"
+        }
       }
     ]
   }
@@ -66,6 +92,7 @@ function App() {
           scene={scenes[selectedScene]}
           setScenes={setScenes}
           selectedScene={selectedScene}
+          scenes={scenes}
         />
         <Properties scenes={scenes} setScenes={setScenes} />
       </div>

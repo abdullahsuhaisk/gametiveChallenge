@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
+import StyledButton from "./styledButton";
 
-const Button = () => {
+const Button = props => {
+  const { scenes, setScenes, scene, componentKey, css } = props;
+  console.log(props);
+  console.log(scene);
+  console.log(css);
+
+  useEffect(() => {
+    props.deltaPosition && setState(props);
+  }, []);
   const [state, setState] = useState({
     deltaPosition: {
-      x: 100,
+      x: 0,
       y: 0
     }
   });
+  const updateState = () => {
+    scene.components.map((item, key) =>
+      key === componentKey ? (item.props = state) : item.props
+    );
+    setScenes(
+      scenes.map(item => {
+        return item.key === scene.key ? (item = scene) : item;
+      })
+    );
+  };
+  // updateState();
 
   const handleDrag = (e, ui) => {
     const { x, y } = state.deltaPosition;
@@ -17,20 +37,23 @@ const Button = () => {
         y: y + ui.deltaY
       }
     });
+    updateState();
   };
+  // console.log(state);
+  console.log(props.componentKey);
 
-  return (
-    <Draggable
-      bounds="parent"
-      onDrag={handleDrag}
-      defaultPosition={{ x: state.deltaPosition.x, y: state.deltaPosition.y }}
-    >
-      <button>
-        x: {state.deltaPosition.x.toFixed(0)}, y:
-        {state.deltaPosition.y.toFixed(0)}
-      </button>
-    </Draggable>
-  );
+  if (props.deltaPosition) {
+    return (
+      <Draggable
+        bounds="parent"
+        onDrag={handleDrag}
+        defaultPosition={{ x: props.deltaPosition.x, y: props.deltaPosition.y }}
+      >
+        <StyledButton {...css}>{css && css.title}</StyledButton>
+      </Draggable>
+    );
+  }
+  return null;
 };
 
 export default Button;
