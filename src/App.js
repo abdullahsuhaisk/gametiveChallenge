@@ -13,6 +13,10 @@ const initialData = [
       {
         name: "myButton",
         props: {}
+      },
+      {
+        name: "myLabel",
+        props: {}
       }
     ]
   },
