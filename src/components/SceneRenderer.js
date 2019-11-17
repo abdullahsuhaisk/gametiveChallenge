@@ -3,16 +3,16 @@ import Button from "./Button";
 import Label from "./Label";
 
 const MyComponentService = {
-  myButton: <Button />,
-  myLabel: <Label />
+  myButton: Button,
+  myLabel: Label
 };
 
-const SceneRenderer = () => {
-  console.log(MyComponentService["myButton"]);
-  console.log(Button);
+const SceneRenderer = ({ scene }) => {
+  console.log(scene);
+  const Component = MyComponentService["myLabel"];
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      {MyComponentService["myButton"]}
+      <Component />
     </div>
   );
 };

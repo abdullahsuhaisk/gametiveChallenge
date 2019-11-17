@@ -29,7 +29,7 @@ class Scene extends React.Component {
             padding: "0"
           }}
         >
-          <SceneRenderer />
+          <SceneRenderer scene={this.props.scene} />
         </div>
       </Wrapper>
     );

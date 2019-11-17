@@ -4,23 +4,37 @@ import ScenesMenu from "./features/ScenesMenu";
 import Inputs from "./features/Inputs";
 import Scene from "./features/Scene";
 import Properties from "./features/Properties";
-import ReactDrag from "./ReactDrag";
 
 const initialData = [
   {
     key: 0,
     name: "Scene1",
-    items: []
+    components: [
+      {
+        name: "myButton",
+        props: {}
+      }
+    ]
   },
   {
     key: 1,
     name: "Scene2",
-    items: []
+    components: [
+      {
+        name: "myButton",
+        props: {}
+      }
+    ]
   },
   {
     key: 2,
     name: "Scene3",
-    items: []
+    components: [
+      {
+        name: "myButton",
+        props: {}
+      }
+    ]
   }
 ];
 function App() {
