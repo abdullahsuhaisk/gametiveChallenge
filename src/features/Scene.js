@@ -31,6 +31,7 @@ class Scene extends React.Component {
             scene={this.props.scene}
             setScenes={this.props.setScenes}
             scenes={this.props.scenes}
+            setSelecetedComponent={this.props.setSelecetedComponent}
           />
         </div>
       </Wrapper>

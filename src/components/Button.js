@@ -3,10 +3,17 @@ import Draggable from "react-draggable";
 import StyledButton from "./styledButton";
 
 const Button = props => {
-  const { scenes, setScenes, scene, componentKey, css } = props;
-  console.log(props);
-  console.log(scene);
-  console.log(css);
+  const {
+    scenes,
+    setScenes,
+    scene,
+    componentKey,
+    css,
+    setSelecetedComponent
+  } = props;
+  // console.log(props);
+  // console.log(scene);
+  // console.log(css);
 
   useEffect(() => {
     props.deltaPosition && setState(props);
@@ -40,7 +47,7 @@ const Button = props => {
     updateState();
   };
   // console.log(state);
-  console.log(props.componentKey);
+  // console.log(props.componentKey);
 
   if (props.deltaPosition) {
     return (
@@ -49,7 +56,9 @@ const Button = props => {
         onDrag={handleDrag}
         defaultPosition={{ x: props.deltaPosition.x, y: props.deltaPosition.y }}
       >
-        <StyledButton {...css}>{css && css.title}</StyledButton>
+        <StyledButton {...css} onClick={() => setSelecetedComponent(componentKey)}>
+          {css && css.title}
+        </StyledButton>
       </Draggable>
     );
   }

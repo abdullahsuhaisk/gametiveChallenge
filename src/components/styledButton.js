@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background: #666666;
-  background:  ${props => props.background || "palevioletred"};
+  width: ${props => props.width || "100px"};
+  height: ${props => props.height || "50px"};
+  background: ${props => props.background || "palevioletred"};
   color: white;
-
 `;
 
 export default StyledButton;

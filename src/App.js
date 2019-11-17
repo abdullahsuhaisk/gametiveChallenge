@@ -20,7 +20,9 @@ const initialData = [
         },
         css: {
           title: "Title",
-          background: "yellow"
+          background: "yellow",
+          width: "100px",
+          height: "110px"
         }
       },
       {
@@ -70,6 +72,8 @@ const initialData = [
 function App() {
   const [scenes, setScenes] = useState(initialData);
   const [selectedScene, setSelectedScene] = useState(0);
+  const [selecetedComponent, setSelecetedComponent] = useState(null);
+
   return (
     <>
       <Save scenes={scenes} setScenes={setScenes} />
@@ -93,8 +97,14 @@ function App() {
           setScenes={setScenes}
           selectedScene={selectedScene}
           scenes={scenes}
+          setSelecetedComponent={setSelecetedComponent}
         />
-        <Properties scenes={scenes} setScenes={setScenes} />
+        <Properties
+          scenes={scenes}
+          setScenes={setScenes}
+          selecetedComponent={selecetedComponent}
+          scene={scenes[selectedScene]}
+        />
       </div>
       {/* <ReactDrag /> */}
     </>

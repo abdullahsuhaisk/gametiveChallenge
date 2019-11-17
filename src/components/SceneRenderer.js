@@ -7,7 +7,7 @@ const MyComponentService = {
   myLabel: Label
 };
 
-const SceneRenderer = ({ scene, scenes, setScenes }) => {
+const SceneRenderer = ({ scene, scenes, setScenes, setSelecetedComponent }) => {
   // console.log(scene.components);
   // const Component = MyComponentService["myLabel"];
   const components = () => {
@@ -23,6 +23,7 @@ const SceneRenderer = ({ scene, scenes, setScenes }) => {
           scene={scene}
           componentKey={key}
           css={item.css}
+          setSelecetedComponent={setSelecetedComponent}
         />
       );
     });
