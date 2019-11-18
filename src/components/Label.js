@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import StyledDiv from "./StyledDiv";
+import { deleteItem } from "./deleteItem";
+
 const Label = props => {
   const {
     scenes,
@@ -12,7 +14,7 @@ const Label = props => {
   } = props;
   // console.log(props);
   // console.log(scene);
-  console.log(css);
+  // console.log(css);
 
   useEffect(() => {
     props.deltaPosition && setState(props);
@@ -63,7 +65,7 @@ const Label = props => {
               top: -20,
               right: -10
             }}
-            onClick={() => console.log("ABC")}
+            onClick={() => deleteItem(scenes, scene, componentKey, setScenes)}
           >
             X
           </span>

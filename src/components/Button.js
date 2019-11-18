@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import StyledButton from "./styledButton";
+import { deleteItem } from "./deleteItem";
 
 const Button = props => {
   const {
@@ -13,7 +14,7 @@ const Button = props => {
   } = props;
   // console.log(props);
   // console.log(scene);
-  console.log(css);
+  // console.log(css);
 
   useEffect(() => {
     props.deltaPosition && setState(props);
@@ -34,7 +35,9 @@ const Button = props => {
       })
     );
   };
-   // updateState();
+  const deleteButton = () => {
+    deleteItem(scenes, scene, componentKey, setScenes);
+  };
 
   const handleDrag = (e, ui) => {
     const { x, y } = state.deltaPosition;
@@ -67,6 +70,7 @@ const Button = props => {
               top: -20,
               right: -10
             }}
+            onClick={() => deleteButton()}
           >
             X
           </span>
