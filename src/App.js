@@ -4,6 +4,7 @@ import ScenesMenu from "./features/ScenesMenu";
 import Inputs from "./features/Inputs";
 import Scene from "./features/Scene";
 import Properties from "./features/Properties";
+import { BACKGROUNDCOLOR } from "./constants/color";
 
 const initialData = [
   {
@@ -20,9 +21,10 @@ const initialData = [
         },
         css: {
           title: "Title",
-          background: "yellow",
+          background: "palevioletred",
           width: "100px",
-          height: "110px"
+          height: "110px",
+          color:'black'
         }
       },
       {
@@ -37,7 +39,8 @@ const initialData = [
           title: "Title",
           background: "yellow",
           width: "100px",
-          height: "110px"
+          height: "20px",
+          color: "black"
         }
       }
     ]
@@ -45,44 +48,12 @@ const initialData = [
   {
     key: 1,
     name: "Scene2",
-    components: [
-      {
-        name: "myButton",
-        props: {
-          deltaPosition: {
-            x: 300,
-            y: 0
-          }
-        },
-        css: {
-          title: "Title",
-          background: "yellow",
-          width: "100px",
-          height: "110px"
-        }
-      }
-    ]
+    components: []
   },
   {
     key: 2,
     name: "Scene3",
-    components: [
-      {
-        name: "myButton",
-        props: {
-          deltaPosition: {
-            x: 300,
-            y: 0
-          }
-        },
-        css: {
-          title: "Title",
-          background: "yellow",
-          width: "100px",
-          height: "110px"
-        }
-      }
-    ]
+    components: []
   }
 ];
 function App() {
@@ -106,7 +77,7 @@ function App() {
       />
       <div
         className="wrapper"
-        style={{ height: "80vh", background: "black", display: "flex" }}
+        style={{ height: "80vh", background: BACKGROUNDCOLOR, display: "flex" }}
       >
         <Inputs
           scenes={scenes}

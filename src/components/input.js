@@ -24,7 +24,7 @@ const Input = props => {
       y: 0
     }
   });
-  const [value, setValue] = useState("write by pressing on input");
+  const [value, setValue] = useState(css && css.title);
   const updateState = () => {
     scene.components.map((item, key) =>
       key === componentKey ? (item.props = state) : item.props
@@ -61,10 +61,8 @@ const Input = props => {
           {...css}
           onClick={() => setSelecetedComponent(componentKey)}
           onChange={e => setValue(e.target.value)}
-          value={value}
-        >
-          {css && css.title}
-        </StyledInput>
+          value={css && css.title}
+        ></StyledInput>
       </Draggable>
     );
   }

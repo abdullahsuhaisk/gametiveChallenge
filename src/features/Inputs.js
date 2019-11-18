@@ -25,18 +25,39 @@ const Inputs = ({ scene, setScenes, scenes }) => {
   // console.log(scenes);
   // console.log(scene);
 
+  const buttonInitialCss = {
+    title: "Title",
+    background: "palevioletred",
+    width: "100px",
+    height: "110px",
+    color: "black"
+  };
+  const labelInitialCss = {
+    title: "Title",
+    background: "yellow",
+    width: "100px",
+    height: "20px",
+    color: "black"
+  };
+  const inputInitialCss = {
+    title: "Title",
+    background: "white",
+    width: "100px",
+    height: "20px",
+    color: "black"
+  };
   const component = {
     name: null,
     props: {
       deltaPosition: {
         x: 0,
         y: 0
-      },
-      content: "Please write a content"
+      }
     }
   };
-  const updateState = componentName => {
+  const updateState = (componentName, componentCss) => {
     component.name = componentName;
+    component.css = componentCss;
     scene.components = [...scene.components, component];
     // console.log(scene);
     setScenes(
@@ -48,11 +69,11 @@ const Inputs = ({ scene, setScenes, scenes }) => {
   const addNewComponent = key => {
     switch (key) {
       case 1:
-        return updateState("myButton");
+        return updateState("myButton", buttonInitialCss);
       case 2:
-        return updateState("myLabel");
+        return updateState("myLabel", labelInitialCss);
       case 3:
-        return updateState("myInput");
+        return updateState("myInput", inputInitialCss);
       default:
         return null;
     }

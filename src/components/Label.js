@@ -12,7 +12,7 @@ const Label = props => {
   } = props;
   // console.log(props);
   // console.log(scene);
-  // console.log(css);
+  console.log(css);
 
   useEffect(() => {
     props.deltaPosition && setState(props);

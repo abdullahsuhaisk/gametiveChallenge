@@ -13,7 +13,7 @@ const Button = props => {
   } = props;
   // console.log(props);
   // console.log(scene);
-  // console.log(css);
+  console.log(css);
 
   useEffect(() => {
     props.deltaPosition && setState(props);
@@ -56,7 +56,10 @@ const Button = props => {
         onDrag={handleDrag}
         defaultPosition={{ x: props.deltaPosition.x, y: props.deltaPosition.y }}
       >
-        <StyledButton {...css} onClick={() => setSelecetedComponent(componentKey)}>
+        <StyledButton
+          {...css}
+          onClick={() => setSelecetedComponent(componentKey)}
+        >
           {css && css.title}
         </StyledButton>
       </Draggable>

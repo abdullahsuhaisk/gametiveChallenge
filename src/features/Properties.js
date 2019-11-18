@@ -10,6 +10,27 @@ const Wrapper = styled.div`
   align-items: center;
   background: gray;
   border: 1px solid black;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    input {
+      padding: 10px;
+      background: #f2f2f2;
+    }
+  }
+  .button {
+    height: 30px;
+    width: 60px;
+    margin: 20px 00px;
+    background: #e6e6e6;
+    text-align: center;
+    border: 1px solid black;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
 `;
 
 const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
@@ -69,7 +90,6 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
                 setCssa({ ...cssa, [e.target.id]: e.target.value })
               }
               value={cssa && cssa.width}
-
             />
           </div>
           <div>
@@ -81,7 +101,6 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
                 setCssa({ ...cssa, [e.target.id]: e.target.value })
               }
               value={cssa && cssa.height}
-
             />
           </div>
           <div>
@@ -104,10 +123,9 @@ const Properties = ({ selecetedComponent, scene, setScenes, scenes }) => {
                 setCssa({ ...cssa, [e.target.id]: e.target.value })
               }
               value={cssa && cssa.color}
-
             />
           </div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="button" />
         </form>
       </Wrapper>
     );
