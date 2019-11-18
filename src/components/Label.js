@@ -56,6 +56,17 @@ const Label = props => {
         defaultPosition={{ x: state.deltaPosition.x, y: state.deltaPosition.y }}
       >
         <StyledDiv {...css} onClick={() => setSelecetedComponent(componentKey)}>
+          <span
+            className="deleteButton"
+            style={{
+              position: "absolute",
+              top: -20,
+              right: -10
+            }}
+            onClick={() => console.log("ABC")}
+          >
+            X
+          </span>
           {(css && css.title) || "Write a title"}
         </StyledDiv>
       </Draggable>

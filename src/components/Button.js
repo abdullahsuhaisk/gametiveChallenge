@@ -34,7 +34,7 @@ const Button = props => {
       })
     );
   };
-  // updateState();
+   // updateState();
 
   const handleDrag = (e, ui) => {
     const { x, y } = state.deltaPosition;
@@ -60,6 +60,16 @@ const Button = props => {
           {...css}
           onClick={() => setSelecetedComponent(componentKey)}
         >
+          <span
+            className="deleteButton"
+            style={{
+              position: "absolute",
+              top: -20,
+              right: -10
+            }}
+          >
+            X
+          </span>
           {css && css.title}
         </StyledButton>
       </Draggable>

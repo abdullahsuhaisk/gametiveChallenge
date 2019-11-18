@@ -62,7 +62,9 @@ const Input = props => {
           onClick={() => setSelecetedComponent(componentKey)}
           onChange={e => setValue(e.target.value)}
           value={css && css.title}
-        ></StyledInput>
+        >
+        </StyledInput>
+
       </Draggable>
     );
   }
